@@ -7,7 +7,7 @@ namespace Iot.Assignment.Domain.Entities;
 public class Student: FullEntityBase<Guid>
 {
     public Guid ClassId { get; set; }
-    public Guid ScoreId { get; set; }
+    public Guid SubjectId { get; set; }
 
     public string FistName { get; set; }
     public string LastName { get; set; }
@@ -16,7 +16,7 @@ public class Student: FullEntityBase<Guid>
     public AddressValueObject? Address { get; set; }
     public string? Email { get; set; }
     public string? NumberPhone { get; set; }
-    public virtual ICollection<Classes> Classes { get; set; }
-    public virtual Scores Scores { get; set; }
+    public virtual Classes Classes { get; set; }
+    public virtual ICollection<Subjects> SubjectCollection { get; set; }
 
 }

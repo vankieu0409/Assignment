@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <Folder Include="Configurations\" />
+    <Folder Include="Repositories\Implement\" />
+    <Folder Include="Repositories\Interface\" />
   </ItemGroup>
 
   <ItemGroup>

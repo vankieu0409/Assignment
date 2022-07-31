@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading.Channels;
+using Iot.Assignment.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Iot.Assignment.Domain;
 using Iot.Assignment.Domain.Entities;
@@ -8,9 +9,9 @@ namespace Iot.Assignment.Data;
 
 public class ApplicationDbContext : DbContext
 {
-    public virtual DbSet<University> Universities { get; set; }
-    public virtual DbSet<Majors> Majors { get; set; }
-    public virtual DbSet<Classes> Classes { get; set; }
+    //public virtual DbSet<University> Universities { get; set; }
+    //public virtual DbSet<Majors> Majors { get; set; }
+    //public virtual DbSet<Classes> Classes { get; set; }
     public virtual DbSet<Student> Students { get; set; }
     public ApplicationDbContext([NotNullAttribute] DbContextOptions options): base(options)
     {
@@ -21,5 +22,11 @@ public class ApplicationDbContext : DbContext
     {
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.LogTo(Console.WriteLine);
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfiguration(new StudentConfiguration());
     }
 }

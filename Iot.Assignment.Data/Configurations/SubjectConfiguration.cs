@@ -10,6 +10,9 @@ public class SubjectConfiguration : IEntityTypeConfiguration<Subjects>
     {
         builder.ToTable("SUBJECT");
         builder.HasKey(entity => entity.Id);
-        //builder.ha
+        builder.HasMany<Scores>(entity => entity.Scores)
+            .WithOne(entity => entity.Subjects)
+            .HasForeignKey(c=>c.SubjectId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
